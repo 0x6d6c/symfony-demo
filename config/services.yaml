@@ -35,3 +35,6 @@ services:
 
     # needed to activate the filters provided by Twig Intl Extension
     Twig\Extra\Intl\IntlExtension: null
+
+    App\Model\SomeActions:
+        public: true
