@@ -31,12 +31,10 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  */
 class PostType extends AbstractType
 {
-    private $slugger;
-
     // Form types are services, so you can inject other services in them if needed
-    public function __construct(SluggerInterface $slugger)
+    public function __construct()
     {
-        $this->slugger = $slugger;
+//        $this->slugger = $slugger;
     }
 
     /**
@@ -82,7 +80,7 @@ class PostType extends AbstractType
                 /** @var Post */
                 $post = $event->getData();
                 if (null !== $postTitle = $post->getTitle()) {
-                    $post->setSlug($this->slugger->slug($postTitle)->lower());
+                    //$post->setSlug($this->slugger->slug($postTitle)->lower());
                 }
             })
         ;

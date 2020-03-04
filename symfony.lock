@@ -126,6 +126,9 @@
     "league/uri-parser": {
         "version": "1.4.1"
     },
+    "liip/test-fixtures-bundle": {
+        "version": "1.7.0"
+    },
     "masterminds/html5": {
         "version": "2.7.0"
     },
@@ -141,9 +144,6 @@
     "ocramius/proxy-manager": {
         "version": "2.1.1"
     },
-    "paragonie/random_compat": {
-        "version": "v9.99.99"
-    },
     "php": {
         "version": "7.2.9"
     },
@@ -154,9 +154,6 @@
         "version": "1.0.1"
     },
     "psr/container": {
-        "version": "1.0.0"
-    },
-    "psr/event-dispatcher": {
         "version": "1.0.0"
     },
     "psr/log": {
@@ -213,6 +210,9 @@
     },
     "symfony/css-selector": {
         "version": "v4.3.3"
+    },
+    "symfony/debug": {
+        "version": "v4.4.5"
     },
     "symfony/debug-bundle": {
         "version": "4.1",
