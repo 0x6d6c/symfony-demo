@@ -13,7 +13,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Post;
-use App\Events\CommentCreatedEvent;
+use App\Event\CommentCreatedEvent;
 use App\Form\CommentType;
 use App\Repository\PostRepository;
 use App\Repository\TagRepository;
@@ -59,6 +59,7 @@ class BlogController extends AbstractController
         // See https://symfony.com/doc/current/templates.html#template-naming
         return $this->render('blog/index.'.$_format.'.twig', [
             'paginator' => $latestPosts,
+            'tagName' => $tag ? $tag->getName() : null,
         ]);
     }
 
@@ -144,12 +145,13 @@ class BlogController extends AbstractController
      */
     public function search(Request $request, PostRepository $posts): Response
     {
-        if (!$request->isXmlHttpRequest()) {
-            return $this->render('blog/search.html.twig');
-        }
-
         $query = $request->query->get('q', '');
         $limit = $request->query->get('l', 10);
+
+        if (!$request->isXmlHttpRequest()) {
+            return $this->render('blog/search.html.twig', ['query' => $query]);
+        }
+
         $foundPosts = $posts->findBySearchQuery($query, $limit);
 
         $results = [];

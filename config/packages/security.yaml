@@ -25,7 +25,11 @@ security:
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
-            anonymous: lazy
+            anonymous: true
+            lazy: true
+
+            # The user provider to use.
+            provider: database_users
 
             # This allows the user to login by submitting a username and password
             # Reference: https://symfony.com/doc/current/security/form_login_setup.html
@@ -48,7 +52,7 @@ security:
                 # The name of the route to redirect to after logging out
                 target: homepage
 
-    # Used to restrict access for large sections of your site
+    # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         # this is a catch-all for the admin area
