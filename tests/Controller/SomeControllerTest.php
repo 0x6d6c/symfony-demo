@@ -1,21 +1,29 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Tests\Controller;
 
 use App\DataFixtures\UserFixtures;
 use App\Model\SomeActions;
+use Doctrine\Common\Annotations\Annotation\IgnoreAnnotation;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Doctrine\Common\Annotations\Annotation\IgnoreAnnotation;
 
 /**
- * Class SomeControllerTest
- * @package App\Tests\Controller
+ * Class SomeControllerTest.
+ *
  * @IgnoreAnnotation("covers")
  */
 class SomeControllerTest extends WebTestCase
 {
-
     use FixturesTrait;
 
     /**
@@ -23,9 +31,8 @@ class SomeControllerTest extends WebTestCase
      */
     public function testSomeAction()
     {
-
         $this->loadFixtures([
-            UserFixtures::class
+            UserFixtures::class,
         ]);
 
         $client = static::createClient();
@@ -45,7 +52,6 @@ class SomeControllerTest extends WebTestCase
         //overwrite the default service: class: Mock_SomeActions_e68f817a
         $container->set('App\Model\SomeActions', $someActions);
 
-
         $crawler = $client->request('GET', '/en/some/action');
 
         //submit the form
@@ -59,6 +65,5 @@ class SomeControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertResponseIsSuccessful($response);
-
     }
 }
